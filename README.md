@@ -109,10 +109,6 @@ public class Demo {
 ## Example app
 See `src/main/java/logger/App.java` for a runnable example that adds a few logs and flushes them.
 
-## Build, test, docs
-- Build: `mvn -q -DskipTests package`
-- Test: `mvn -q test`
-- Javadoc: `mvn -q javadoc:javadoc` → `target/apidocs` (already present in this repo under `target/apidocs` after generation)
 
 ## Caveats
 - File format is Java serialization; inspect with `ObjectInputStream`, not a text editor.
