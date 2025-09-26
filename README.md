@@ -119,5 +119,5 @@ See `src/main/java/logger/App.java` for a runnable example that adds a few logs 
 - Deletion policy may drop ~30% oldest entries when latency exceeds a threshold.
 - In-memory buffer is a `Set<Log>`; duplicates by identity are not stored twice.
 
-#License 
+## License 
 MIT License. See `LICENSE` for full text.
