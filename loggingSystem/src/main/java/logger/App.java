@@ -33,20 +33,6 @@ public class App {
         logger.appendLog();
 
         logger.shutdown();
-
-//        System.out.println(Logger.getInstance());
-//        System.out.println(Logger.getInstance());
-
-//        String asciiLogger =
-//                " _                            _  _   \n" +
-//                        "| |    ___   ___  _ __   __| || |_ \n" +
-//                        "| |   / _ \\ / _ \\| '_ \\ / _` || __|\n" +
-//                        "| |__| (_) | (_) | | | | (_| || |_ \n" +
-//                        "|_____\\___/ \\___/|_| |_|\\__,_| \\__|\n";
-//
-//        System.out.print(asciiLogger);
-//
-//        System.out.println("Press ? for help");
-
-    }
+ }
 }
+
