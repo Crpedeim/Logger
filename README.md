@@ -72,22 +72,33 @@ dependencies {
 
 ## Quick start
 ```java
+import logger.enums.Severity;
 import logger.pojo.Log;
 import logger.service.Logger;
-import logger.enums.Severity;
-
 public class Demo {
-  public static void main(String[] args) {
-    Logger logger = Logger.getInstance();
+    public static void main(String[] args) {
+        Logger logger = Logger.getInstance();
 
-    logger.addLog(new Log("Starting up..."));
-    logger.addLog(new Log("Fetched data", Severity.LOW));
-    logger.addLog(new Log("Possible issue detected", Severity.WARN));
-    logger.addLog(new Log("Fatal error!", Severity.HIGH));
+        logger.addLog(new Log("This is log 1",Severity.WARN));
+        logger.addLog(new Log("This is log 2", Severity.LOW));
+        logger.addLog(new Log("This is log 3", Severity.MEDIUM));
+        logger.addLog(new Log("This is log 4", Severity.HIGH));
+        logger.addLog(new Log("This is log 5", Severity.CRITICAL));
 
-    // Flush buffered logs to the file store asynchronously
-    logger.appendLog();
-  }
+        logger.appendLog();
+
+        logger.addLog(new Log("This is log 6", Severity.WARN));
+        logger.addLog(new Log("This is log 7", Severity.LOW));
+        logger.addLog(new Log("This is log 8", Severity.MEDIUM));
+        logger.addLog(new Log("This is log 9", Severity.HIGH));
+        logger.addLog(new Log("This is log 10", Severity.CRITICAL));
+
+        logger.appendLog();
+
+        logger.shutdown();
+
+
+    }
 }
 ```
 
@@ -99,7 +110,7 @@ public class Demo {
 - `logger.pojo.Log`
   - Fields: `data`, `timestamp`, `threadId`, `threadName`, `severity`, `stackTrace`
   - Ctors: `Log(String data)`, `Log(String data, Severity severity)`
-- `logger.enums.Severity`: `LOW`, `HIGH`, `WARN`
+- `logger.enums.Severity`: `LOW`, `HIGH`, `WARN`, `MEDIUM` , `CRITICAL` , `UNDEFINED`
 
 ## Behavior and data format
 - `addLog` enriches entries with UTC timestamp, thread info, stack trace, default `LOW` severity if missing.
@@ -112,7 +123,6 @@ See `src/main/java/logger/App.java` for a runnable example that adds a few logs 
 
 ## Caveats
 - File format is Java serialization; inspect with `ObjectInputStream`, not a text editor.
-- Deletion policy may drop ~30% oldest entries when latency exceeds a threshold.
 - In-memory buffer is a `Set<Log>`; duplicates by identity are not stored twice.
 
 ## License 
